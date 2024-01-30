@@ -11,7 +11,8 @@ namespace Orginal
 
             // Add services to the container.
             builder.Services.AddRazorComponents()
-                .AddInteractiveServerComponents();
+                .AddInteractiveServerComponents()
+                .AddCircuitOptions(options => options.DetailedErrors = true);
 
             builder.Services.AddDependentServices(builder.Configuration);
 
