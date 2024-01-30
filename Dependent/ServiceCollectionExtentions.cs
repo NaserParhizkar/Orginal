@@ -1,14 +1,16 @@
-﻿using Dependent.Components.Account;
+﻿using Dependent.Components;
+using Dependent.Components.Account;
 using Dependent.Data;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Routing;
 
 namespace Dependent
 {
     public static class ServiceCollectionExtentions
     {
-        public static IServiceCollection AddDependentServices(this IServiceCollection services,IConfiguration configuration)
+        public static IServiceCollection AddDependentServices(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddCascadingAuthenticationState();
             services.AddScoped<IdentityUserAccessor>();
@@ -34,6 +36,11 @@ namespace Dependent
 
             services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
             return services;
+        }
+
+        public static void MapDependents(this WebApplication application)
+        {
+            application.MapAdditionalIdentityEndpoints();
         }
     }
 }
