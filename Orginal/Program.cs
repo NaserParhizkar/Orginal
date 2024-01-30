@@ -33,6 +33,9 @@ namespace Orginal
             app.MapRazorComponents<App>()
                 .AddInteractiveServerRenderMode();
 
+            app.MapRazorComponents<Dependent.Components.App>()
+                .AddInteractiveServerRenderMode();
+
             // Add additional endpoints required by the Identity /Account Razor components.
             app.MapDependents();
 
