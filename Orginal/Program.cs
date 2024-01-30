@@ -31,9 +31,6 @@ namespace Orginal
             app.UseAntiforgery();
 
             app.MapRazorComponents<App>()
-                .AddInteractiveServerRenderMode();
-
-            app.MapRazorComponents<App>()
                 .AddAdditionalAssemblies(typeof(Dependent.Components._Imports).Assembly)
                 .AddInteractiveServerRenderMode();
 
