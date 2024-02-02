@@ -1,5 +1,7 @@
 using Orginal.Components;
 using Dependent;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 namespace Orginal
 {
@@ -32,8 +34,45 @@ namespace Orginal
             app.UseAntiforgery();
 
             app.MapRazorComponents<App>()
-                .AddAdditionalAssemblies(typeof(Dependent.Components._Imports).Assembly)
                 .AddInteractiveServerRenderMode();
+
+            app.MapWhen(context => context.Request.Path.StartsWithSegments("/Depend") ||
+                                   context.Request.Path.StartsWithSegments("/Account"),
+                        depend =>
+                        {
+                            depend.UseRouting();
+                            depend.UseHttpsRedirection();
+
+                            depend.UseStaticFiles();
+                            depend.UseAntiforgery();
+
+                            depend.UseAuthentication();
+                            depend.UseAuthorization();
+
+                            depend.UseEndpoints(endpoints =>
+                            {
+                                endpoints.MapRazorComponents<Dependent.Components.App>()
+                                .AddInteractiveServerRenderMode();
+                            });
+                        });
+
+            app.MapWhen(context => context.Request.Path.StartsWithSegments("/seconddepend"),depend =>
+                    {
+                        depend.UseRouting();
+                        depend.UseHttpsRedirection();
+
+                        depend.UseStaticFiles();
+                        depend.UseAntiforgery();
+
+                        depend.UseAuthentication();
+                        depend.UseAuthorization();
+
+                        depend.UseEndpoints(endpoints =>
+                        {
+                            endpoints.MapRazorComponents<SecondDependent.Components.App>()
+                            .AddInteractiveServerRenderMode();
+                        });
+                    });
 
             // Add additional endpoints required by the Identity /Account Razor components.
             app.MapDependents();
