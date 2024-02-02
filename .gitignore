@@ -7,3 +7,8 @@
 /Orginal/obj
 /Dependent/bin/Debug/net8.0
 /Dependent/obj
+/Orginal/bin/Release/net8.0
+/.vs/ProjectEvaluation
+/Dependent/bin/Release/net8.0
+/SecondDependent/bin/Debug/net8.0
+/SecondDependent/obj
