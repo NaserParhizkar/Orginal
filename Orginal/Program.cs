@@ -56,7 +56,8 @@ namespace Orginal
                             });
                         });
 
-            app.MapWhen(context => context.Request.Path.StartsWithSegments("/seconddepend"),depend =>
+            app.MapWhen(context => context.Request.Path.StartsWithSegments("/seconddepend"),
+                depend =>
                     {
                         depend.UseRouting();
                         depend.UseHttpsRedirection();

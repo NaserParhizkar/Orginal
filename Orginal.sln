@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Orginal", "Orginal\Orginal.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dependent", "Dependent\Dependent.csproj", "{EB65D9CB-677A-4745-952C-B285AC5B3A64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SecondDependent", "SecondDependent\SecondDependent.csproj", "{79AAFB50-2FA8-4CCE-BAE1-7B0EDF296120}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SecondDependent", "SecondDependent\SecondDependent.csproj", "{79AAFB50-2FA8-4CCE-BAE1-7B0EDF296120}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
